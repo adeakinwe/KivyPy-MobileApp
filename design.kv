@@ -1,0 +1,72 @@
+<LoginScreen>:
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 1
+            Label:
+                text: "User Login"
+            TextInput:
+                id: username
+                hint_text: "Username"
+            TextInput:
+                id: password
+                hint_text: "Password"
+            Button:
+                text: "Login"
+                on_press:root.login_success(root.ids.username.text, root.ids.password.text)
+            Label:
+                id: wrong_login
+                text: ""
+        GridLayout:
+            cols: 2
+            Button: 
+                text: "Forgot Password"
+            Button:
+                text: "Sign Up"
+                on_press: root.sign_up()
+ 
+<SignUpScreen>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Sign up for our services"
+        TextInput:
+            id: username
+            hint_text: "Username"
+        TextInput:
+            id: password
+            hint_text: "Password"
+        Button:
+            text: "Submit"
+            on_press:root.add_user(root.ids.username.text, root.ids.password.text)
+<SignUpSuccessScreen>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Your sign-up was successful"
+        Button:
+            text: "Back to Login Page"
+            on_press:root.go_login()
+
+<LoginSuccessScreen>:
+    GridLayout:
+        cols: 1
+        Button:
+            text:"Logout"
+            on_press:root.login()
+        Label:
+            text: "How's your mood today?"
+        TextInput:
+            hint_text: "cheerful, moody, excited...?"
+        Button:
+            text: "Motivate Me"
+
+<RootWidget>:
+    LoginScreen:
+        name: "login_screen"
+    SignUpScreen:
+        name: "sign_up_screen"
+    SignUpSuccessScreen:
+        name:"sign_up_success_screen"
+    LoginSuccessScreen:
+        name: "login_success_screen"
